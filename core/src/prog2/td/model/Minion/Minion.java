@@ -14,7 +14,7 @@ public abstract class Minion extends Entity {
     private Vector2 velocity;
     private final static float WIDTH = 32;
     private final static float HEIGHT = 51;
-    private int hitpoints = 1000;
+    private int hitpoints = 100;
     private int i = 0;
     private Path path;
 
