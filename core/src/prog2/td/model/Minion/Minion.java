@@ -23,7 +23,7 @@ public abstract class Minion extends Entity {
         getPosition().setHeight(HEIGHT);
         getPosition().setWidth(WIDTH);
         getPosition().setCenter(center);
-        this.velocity = new Vector2(-1f, 0f);
+        this.velocity = new Vector2(1f, 0f);
         this.path = path;
     }
 

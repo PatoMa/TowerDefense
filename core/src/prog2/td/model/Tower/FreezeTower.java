@@ -9,7 +9,6 @@ import prog2.td.model.Tower.Projectile.FreezeRay;
  */
 public class FreezeTower extends Tower{
     public FreezeTower(Vector2 center, Game game){
-        super(center, game);
-        projectile = new FreezeRay();
+        super(center, game, 100, 1, new FreezeRay());
     }
 }

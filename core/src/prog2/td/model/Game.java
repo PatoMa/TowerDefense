@@ -3,8 +3,9 @@ package prog2.td.model;
 import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.math.Vector2;
 import prog2.td.model.Minion.Minion;
+import prog2.td.model.Minion.ZombieMinion;
+import prog2.td.model.Tower.SimpleTower;
 import prog2.td.model.Tower.Tower;
-import prog2.td.model.Tower.TowerDart;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -29,8 +30,8 @@ public class Game {
     }
 
     public void init() {
-        addTower(new TowerDart(new Vector2(200, 200), this));
-        addMinion(new Minion(new Vector2(0, 120), this));
+        addTower(new SimpleTower(new Vector2(200, 200), this));
+        addMinion(new ZombieMinion(new Vector2(0, 120),this, path));
     }
 
     public void update(Graphics graphics) {
@@ -41,6 +42,7 @@ public class Game {
             m.update(graphics.getDeltaTime());
             if (m.isKilled()) {
                 minions.remove(m);
+                player.addMoney(50);
                 for (GameListener gl: listeners)
                     gl.minionKilled(m);
             }

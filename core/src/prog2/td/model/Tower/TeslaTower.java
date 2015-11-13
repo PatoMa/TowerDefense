@@ -9,7 +9,6 @@ import prog2.td.model.Tower.Projectile.ElectricRay;
  */
 public class TeslaTower extends Tower {
     public TeslaTower(Vector2 center, Game game){
-        super(center, game);
-        projectile = new ElectricRay();
+        super(center, game, 100, 1, new ElectricRay());
     }
 }

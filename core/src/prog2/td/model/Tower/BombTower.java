@@ -9,7 +9,6 @@ import prog2.td.model.Tower.Projectile.Bomb;
  */
 public class BombTower extends Tower {
     public BombTower(Vector2 center, Game game){
-        super(center, game);
-        projectile = new Bomb();
+        super(center, game, 100, 1, new Bomb());
     }
 }

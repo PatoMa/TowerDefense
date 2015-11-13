@@ -9,7 +9,6 @@ import prog2.td.model.Tower.Projectile.SimpleProjectile;
  */
 public class AreaTower extends Tower {
     public AreaTower(Vector2 center, Game game){
-        super(center, game);
-        projectile = new SimpleProjectile();
+        super(center, game, 100, 1, new SimpleProjectile());
     }
 }
