@@ -1,5 +1,8 @@
 package prog2.td.model;
 
+import prog2.td.model.Minion.Minion;
+import prog2.td.model.Tower.Tower;
+
 /**
  * Created by Pato on 10/31/15.
  */

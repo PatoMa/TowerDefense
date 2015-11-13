@@ -1,24 +1,30 @@
-package prog2.td.model;
+package prog2.td.model.Minion;
 
 import com.badlogic.gdx.math.Vector2;
+import prog2.td.model.Entity;
+import prog2.td.model.Game;
+import prog2.td.model.Path;
 
 /**
  * Created by Pato on 10/31/15.
  */
-public class Minion extends Entity {
+public abstract class Minion extends Entity {
 
     private boolean killed = false;
     private Vector2 velocity;
     private final static float WIDTH = 32;
     private final static float HEIGHT = 51;
-    private int hitpoints = 100;
+    private int hitpoints = 1000;
+    private int i = 0;
+    private Path path;
 
-    public Minion(Vector2 center, Game game) {
+    public Minion(Vector2 center, Game game, Path path) {
         super(game);
         getPosition().setHeight(HEIGHT);
         getPosition().setWidth(WIDTH);
         getPosition().setCenter(center);
-        this.velocity = new Vector2(-1f, -0.1f);
+        this.velocity = new Vector2(-1f, 0f);
+        this.path = path;
     }
 
     @Override
@@ -26,10 +32,37 @@ public class Minion extends Entity {
         if (isKilled()) {
             return;
         }
+        move();
+    }
+
+    private void move() {
         Vector2 vect = new Vector2();
         getPosition().getCenter(vect);
-
         vect.add(velocity);
+
+        for(int i = 0;i<path.getRectangles().size();i++){
+            if(this.getPosition().overlaps(path.getRectangles().get(i))){
+                System.out.println("Llego al: " + i);
+                if(i==0){
+                    velocity.rotate(-90);
+                    vect.add(velocity);
+                }
+                if(i==1){
+                    velocity.rotate(90);
+                    vect.add(velocity);
+                }
+                if(i==2){
+                    velocity.rotate(90);
+                    vect.add(velocity);
+                }
+                if(i==3){
+                    velocity.rotate(-90);
+                    vect.add(velocity);
+                }
+            }
+
+        }
+
 
         checkBoundaries(vect);
 
@@ -66,7 +99,7 @@ public class Minion extends Entity {
     }
 
     public void death() {
-        Minion minion = new Minion(getPosition().getCenter(new Vector2()), getGame());
+        Minion minion = new ZombieMinion(getPosition().getCenter(new Vector2(0,400)), getGame(),path);
 
         if(minion.velocity.x > 0) {
             minion.velocity.x *= -1;

@@ -1,6 +1,10 @@
-package prog2.td.model;
+package prog2.td.model.Tower;
 
 import com.badlogic.gdx.math.Vector2;
+import prog2.td.model.Entity;
+import prog2.td.model.Game;
+import prog2.td.model.Minion.Minion;
+import prog2.td.model.Tower.Projectile.Projectile;
 
 import java.util.List;
 
@@ -11,7 +15,7 @@ public abstract class Tower extends Entity {
     private float range;
     private float delay;
     private float timer = 0;
-    private int damage;
+    protected Projectile projectile;
     private static final float WIDTH = 32;
     private static final float HEIGHT = 33;
     private int upgradeSpeed = 0;
@@ -20,14 +24,14 @@ public abstract class Tower extends Entity {
 
     private Minion target;
 
-    public Tower(Vector2 center, Game game, float range, float delay, int damage) {
+    public Tower(Vector2 center, Game game, float range, float delay, Projectile projectile) {
         super(game);
         getPosition().setHeight(HEIGHT);
         getPosition().setWidth(WIDTH);
         getPosition().setCenter(center);
         this.range = range;
-        this.damage = damage;
         this.delay= delay;
+        this.projectile = projectile;
     }
 
 
@@ -72,7 +76,7 @@ public abstract class Tower extends Entity {
     }
 
     public void attack(Minion minion) {
-        minion.damage(damage);
+        minion.damage(projectile.getDamage());
     }
 
     public float getRange() {
@@ -91,11 +95,4 @@ public abstract class Tower extends Entity {
         this.delay = delay;
     }
 
-    public int getDamage() {
-        return damage;
-    }
-
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
 }

@@ -9,8 +9,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import prog2.td.model.Entity;
 import prog2.td.model.GameListener;
-import prog2.td.model.Minion;
-import prog2.td.model.Tower;
+import prog2.td.model.Minion.Minion;
+import prog2.td.model.Tower.Tower;
 
 import java.util.HashMap;
 

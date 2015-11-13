@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
-import prog2.td.model.Tower;
+import prog2.td.model.Tower.Tower;
 
 /**
  * Created by Pato on 10/31/15.

@@ -4,27 +4,26 @@ package prog2.td.model;
  * Created by Pato on 10/31/15.
  */
 public class Player {
-    private int gold;
+    private int money;
     private int lives;
+    private int level;
 
     public Player() {
-
+        money = 0;
+        level = 1;
+        lives = 50;
     }
 
-    public int getGold() {
-        return gold;
+    public int getMoney() {
+        return money;
     }
 
-    public void setGold(int gold) {
-        this.gold = gold;
+    public void addMoney(int x) {
+        money += x;
     }
 
-    public void addGold(int x) {
-        gold += x;
-    }
-
-    public void spendGold(int x) {
-        gold -= x;
+    public void spendMoney(int x) {
+        money -= x;
     }
 
     public boolean isOver() {
@@ -35,8 +34,24 @@ public class Player {
         lives--;
     }
 
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
     public int getLives() {
         return lives;
+    }
+
+    public void printString(){
+        System.out.println("Vida: " + getLives() + " Plata: " + getMoney());
     }
 
     public void setLives(int i) {
